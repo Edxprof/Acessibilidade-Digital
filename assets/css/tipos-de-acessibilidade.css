@@ -1,0 +1,19 @@
+.bg-type {
+    background-color: transparent !important;
+}
+
+.img-type {
+    max-width: 100% !important;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.col-lg-6.text-center.bg-type {
+    padding: 15px;
+}
+
+.container-fluid.py-3 {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+}
