@@ -1,0 +1,252 @@
+/* Paleta de cores acessível */
+:root {
+    --primary-color: #01004D;
+    /* Azul escuro (Referência) */
+    --secondary-color: #388E3C;
+    /* Verde acessível */
+    --accent-color: #FC903F;
+    /* Laranja (Referência) */
+    --dark-color: #212121;
+    /* Cinza escuro */
+    --light-color: #FAFAFA;
+    /* Cinza claro */
+    --white: #FFFFFF;
+    --border-color: #BDBDBD;
+}
+
+/* Global Styles */
+body {
+    background-color: var(--white);
+    color: var(--dark-color);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+}
+
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-wrapper {
+    width: 100%;
+    max-width: 600px;
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+
+/* Main Content */
+
+
+.loginForm {
+    padding: 0;
+}
+
+.form-content {
+    padding: 2rem;
+}
+
+.game-image {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.game-image img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    padding: 1rem;
+    background-color: var(--light-color);
+}
+
+.form-content h2 {
+    font-size: 2rem;
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.game-description {
+    text-align: center;
+    font-size: 1.125rem;
+    color: #616161;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.nomeJogador {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.125rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: var(--white);
+}
+
+.nomeJogador:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(56, 142, 60, 0.2);
+}
+
+.form-help {
+    display: block;
+    font-size: 0.875rem;
+    color: #757575;
+    margin-top: 0.5rem;
+}
+
+/* Botão */
+.botaoLogin {
+    width: 100%;
+    padding: 1.25rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.botaoLogin:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.botaoLogin:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.botaoLogin:focus:not(:disabled) {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Back Link */
+.back-link {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.back-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.back-link a:hover,
+.back-link a:focus {
+    color: var(--secondary-color);
+    transform: translateX(-4px);
+}
+
+/* Footer */
+footer {
+    padding: 2rem 1rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-content p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    max-width: 100%;
+}
+
+.footer-accessibility {
+    font-size: 0.9rem;
+    color: #BDBDBD;
+}
+
+.footer-accessibility strong {
+    color: var(--white);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .logo-container h1 {
+        font-size: 1.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    .form-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .game-description {
+        font-size: 1rem;
+    }
+
+    .nomeJogador {
+        font-size: 1rem;
+    }
+
+    .botaoLogin {
+        font-size: 1.125rem;
+        padding: 1rem;
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #0D47A1;
+        --secondary-color: #1B5E20;
+    }
+}

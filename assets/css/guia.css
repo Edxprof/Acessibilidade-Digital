@@ -1,0 +1,249 @@
+/* Paleta de cores acessível */
+:root {
+    --primary-color: #01004D;
+    /* Azul escuro (Referência) */
+    --secondary-color: #388E3C;
+    /* Verde acessível */
+    --accent-color: #FC903F;
+    /* Laranja (Referência) */
+    --dark-color: #212121;
+    /* Cinza escuro */
+    --light-color: #FAFAFA;
+    /* Cinza claro */
+    --white: #FFFFFF;
+    --border-color: #BDBDBD;
+}
+
+/* Global Styles */
+body {
+    background-color: var(--white);
+    color: var(--dark-color);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+}
+
+
+
+nav:not([aria-label="breadcrumb"]) ul {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+}
+
+nav:not([aria-label="breadcrumb"]) a {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: var(--white);
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-bottom: 3px solid transparent;
+}
+
+nav:not([aria-label="breadcrumb"]) a:hover,
+nav:not([aria-label="breadcrumb"]) a:focus {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    border-bottom-color: var(--accent-color);
+}
+
+nav:not([aria-label="breadcrumb"]) a[aria-current="page"] {
+    background-color: var(--secondary-color);
+    border-bottom-color: var(--accent-color);
+}
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Introdução */
+.intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.intro h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.intro p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--dark-color);
+    max-width: 100%;
+}
+
+.intro strong {
+    color: var(--secondary-color);
+}
+
+/* Seção de Categoria */
+.category-section {
+    margin-bottom: 4rem;
+}
+
+.category-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    /* Changed to Blue */
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 4px solid var(--accent-color);
+    font-weight: 700;
+}
+
+/* Card de Dispositivo */
+.device-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    background-color: var(--white);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    /* Lighter shadow */
+    border: 1px solid #eee;
+    /* Subtle border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.device-card:hover,
+.device-card:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.device-card.reverse {
+    grid-template-columns: 1fr 1fr;
+}
+
+.device-card.reverse img {
+    order: 2;
+}
+
+.device-card.reverse .device-content {
+    order: 1;
+}
+
+.device-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.device-content h3 {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.device-content p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--dark-color);
+}
+
+/* Footer */
+footer {
+    padding: 2rem 1rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-content p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    max-width: 100%;
+}
+
+.footer-accessibility {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.footer-accessibility strong {
+    color: var(--dark-color);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .logo-container h1 {
+        font-size: 1.5rem;
+    }
+
+    nav:not([aria-label="breadcrumb"]) ul {
+        flex-direction: column;
+    }
+
+    nav:not([aria-label="breadcrumb"]) li {
+        min-width: 100%;
+    }
+
+    .logo-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .intro h2 {
+        font-size: 2rem;
+    }
+
+    .category-title {
+        font-size: 2rem;
+    }
+
+    .device-card,
+    .device-card.reverse {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .device-card.reverse img,
+    .device-card.reverse .device-content {
+        order: 0;
+    }
+
+    .device-card img {
+        height: 250px;
+    }
+
+    .device-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .device-content p {
+        font-size: 1rem;
+    }
+}

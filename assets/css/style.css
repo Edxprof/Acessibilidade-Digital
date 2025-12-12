@@ -1,0 +1,269 @@
+/* Paleta de cores acessível */
+:root {
+    --primary-color: #1976D2;
+    --secondary-color: #388E3C;
+    --accent-color: #F57C00;
+    --dark-color: #212121;
+    --light-color: #FAFAFA;
+    --white: #FFFFFF;
+}
+
+body {
+    background: linear-gradient(135deg, #E3F2FD 0%, #C8E6C9 100%);
+    min-height: 100vh;
+    padding: 0;
+}
+
+.game-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    /* Spacing to avoid overlap with fixed header/footer */
+    padding-top: 112px; /* approximate navbar height + shadow */
+    padding-bottom: 72px;
+    /* Ensure area is tall enough so footer doesn't crowd content */
+    min-height: calc(100vh - 184px); /* header (~112px) + footer (~72px) */
+}
+
+/* Game Info */
+.game-info {
+    background-color: var(--white);
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 1.75rem auto; /* extra spacing above cards */
+    max-width: 1000px; /* align with game-main width */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: sticky; /* keep visible while scrolling */
+    top: 72px; /* just below the fixed navbar */
+    z-index: 95; /* above content, below header */
+}
+
+.player-info,
+.timer-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+    /* Add bold style for the active header link (Bootstrap-compatible) */
+    .navbar a[aria-current="page"],
+    .navbar .nav-link.active {
+        font-weight: 700 !important;
+    }
+
+.player-info .label,
+.timer-info .label {
+    color: #616161;
+}
+
+.player {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.timer {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    min-width: 50px;
+    text-align: center;
+}
+
+/* Container de Cards - escopado ao jogo para não afetar Bootstrap */
+.game-main #game-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin: 0 auto 2rem auto;
+    padding-top: 96px; /* spacer to avoid overlap with sticky info bar */
+    max-width: 1000px; /* keep grid aligned with main width */
+}
+
+/* Card */
+.cards {
+    width: 100%;
+    aspect-ratio: 1;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.cards.revelarCarta {
+    transform: rotateY(180deg);
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.cardFront {
+    background-size: cover;
+    background-position: center;
+    transform: rotateY(180deg);
+}
+
+.cardBack {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--white);
+}
+
+.cardBack::before {
+    content: "?";
+    font-weight: 700;
+}
+
+.cards:hover .face {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.desabilitarCard {
+    opacity: 0.5;
+    pointer-events: none;
+    filter: grayscale(100%);
+}
+
+/* Game Actions */
+.game-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+/* Give footer a comfortable gap after game content only on game page */
+.game-main + .bg-body-tertiary {
+    margin-top: 24px;
+}
+
+.reiniciar,
+.voltar-home {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+}
+
+.reiniciar {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+.reiniciar:hover,
+.reiniciar:focus {
+    background-color: #E65100;
+    transform: scale(1.05);
+}
+
+.voltar-home {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.voltar-home:hover,
+.voltar-home:focus {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .game-main {
+        padding-top: 96px; /* smaller navbar height on mobile */
+        padding-bottom: 72px;
+        min-height: calc(100vh - 168px);
+    }
+    .game-info {
+        top: 64px; /* slightly less for mobile navbar */
+        border-radius: 10px;
+    }
+    .game-main #game-board {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.75rem;
+        max-width: 640px;
+        padding-top: 84px; /* slightly smaller spacer on mobile */
+    }
+
+    .game-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .player-info,
+    .timer-info {
+        justify-content: center;
+    }
+
+    .cardBack::before {
+        font-size: 2rem;
+    }
+
+    .reiniciar,
+    .voltar-home {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Scope grid rules to the game container only */
+    .game-main #game-board {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        max-width: 440px;
+        padding-top: 80px;
+    }
+    .game-info {
+        border-radius: 10px;
+        margin-bottom: 1.25rem; /* keep a bit more gap on mobile */
+        padding: 1rem;
+        top: 64px; /* ensure correct offset on very small screens */
+    }
+
+    .player-info,
+    .timer-info {
+        font-size: 1rem;
+    }
+
+    .timer {
+        font-size: 1.25rem;
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #0D47A1;
+        --secondary-color: #1B5E20;
+        --accent-color: #E65100;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cards {
+        transition: none;
+    }
+}
